@@ -1,4 +1,4 @@
-.relogioContainer{
+.clockContainer{
     background-color: rgba(0, 0, 0, 0.2);
     padding: 30px 50px;
     border-radius: 15px;
@@ -16,5 +16,5 @@
 .data {
     font-size: 1.5rem;
     margin-top: 5px;
-    font-style: italic;
+    font-weight: bold;
 }
