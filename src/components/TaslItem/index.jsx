@@ -53,6 +53,17 @@ export default function TaskItem({
             )}
 
             <div className={styles.actions}>
+                {isCompletedList && (
+                    <button onClick={handleEdit} className={styles.edit}>
+                        {isEditing ? "💾" : "✏️"}
+                    </button>
+                )}
+                <button
+                    onClick={() => deleteTask(task.id)}
+                    className={styles.delete}
+                >
+                    {isCompletedList ? "↩️" : "X"}
+                </button>
                 
             </div>
         </li>
