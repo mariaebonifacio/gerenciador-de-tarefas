@@ -15,11 +15,42 @@ export default function App() {
     return saved ? JSON.parse(saved): []
   })
 
-  // eleele vai pegar os dados da tarefa
+  // ele vai pegar os dados da tarefa
   const addTask = (task) => {
     setTasks([...tasks, { id: Date.now(),
       text: task, completed: false }])
   }
+
+  //vai possibilitar a edição da tarefa
+  const editTask = (id, newText) => {
+    setTasks(
+      tasks.map((task) =>
+      task.id === id ? {...task, text: newText } : task
+    )
+    )
+  }
+
+  // Quando fro concluir a tarefa
+  const toggleTask = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.complete } : task
+    )
+    )
+  }
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  const restoreTask = (id) => {
+    setTasks(
+      tasks.map((task) =>
+      task.id === id ? { ...task, completed: false } : task)
+    )
+  }
+
+  
 
   // depois que o cara digitou eu tenho que colocar a tarefa no LocalStorage
   // todas as vezes que eu clicar em incluir ele tem que colocar a tarefa no localStorage
@@ -38,6 +69,7 @@ export default function App() {
 
     </div>
   )
+
 }
 
 
