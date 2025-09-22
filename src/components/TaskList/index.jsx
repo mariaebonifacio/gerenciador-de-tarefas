@@ -1,7 +1,8 @@
-import TaskItem from "../TaslItem"
+import TaskItem from "../TaskItem"
 import styles from "./TaskList.module.css"
 
 export default function TaskList({
+    // objetos que compõe o TaskItem
     tasks,
     toggleTask, 
     deleteTask,
@@ -20,14 +21,15 @@ export default function TaskList({
 
 return(
     <ul className={styles.list}>
-        {task.map((task) => (
+        {tasks.map((task) => (
             <TaskItem
-            key={task.id}
-            task={task}
-            toggleTask={toggleTask}
-            deleteTask={deleteTask}
-            editTask={editTask}
-            isCompletedList={isCompletedList}
+            // função interna - encontrar o index: posição do objeto
+                key={task.id}
+                task={task}
+                toggleTask={toggleTask}
+                deleteTask={deleteTask}
+                editTask={editTask}
+                isCompletedList={isCompletedList}
             />
         ))}
     </ul>

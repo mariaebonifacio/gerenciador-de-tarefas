@@ -4,6 +4,7 @@ import TaskInput from "./components/TaskInput"
 // import TaskList from "./components/TaskList"
 import styles from "./App.module.css"
 import Clock from "./components/Clock"
+import TaskList from "./components/TaskList"
 
 
 export default function App() {
@@ -65,7 +66,35 @@ export default function App() {
       <Clock />
       <TaskInput addTask={addTask} />
 
-      <div className={styles.listContaner}></div>
+      <div className={styles.listContaner}>
+        <div className={styles.pending}>
+          <h2>Tarefas Pendentes</h2>
+          {/* Componente que irá exibir as tarefas */}
+          <TaskList
+            tasks={tasks.filter(task => !task.completed)}
+            // Clico nela para deixa-las concluidas
+            toggleTask={toggleTask}
+            deleteTask={deleteTask}
+            editTask={editTask}
+          />
+        </div>
+
+         {/* de acordo com o que for exibido  */}
+        <div className={styles.completed}>
+          <h2>Tarefas Concluídas</h2>
+          <TaskList
+            tasks={tasks.filter(task => task.completed)}
+            // desativa o toggle
+            toggleTask={() => {}}
+            // restaura a tarefa
+            deleteTask={restoreTask}
+            // desativa a edição
+            editTask={() => {}}
+            //define como completo
+            isCompletedList={true}
+          />
+        </div>
+      </div>
 
     </div>
   )
